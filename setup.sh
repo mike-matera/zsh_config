@@ -12,11 +12,13 @@ for config in $scripthome/config/*; do
     configtarget="$HOME/.$(basename $config)"
 
     # Check the original.
-    if [ ! -h $configtarget ]; then
-	echo "Moving original file $configtarget -> $configtarget.bak"
-        mv $configtarget "$configtarget.bak"
+    if [ -f $configtarget ]; then 
+	if [ ! -h $configtarget ]; then
+	    echo "Moving original file $configtarget -> $configtarget.bak"
+            mv $configtarget "$configtarget.bak"
+	fi
     fi
-
+    
     # Make links
     echo "Linking $configtarget -> $config"
     ln -fs $config $configtarget 
