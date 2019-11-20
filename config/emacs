@@ -1,0 +1,165 @@
+
+(defun prepend-path ( my-path ) 
+  (setq load-path (cons (expand-file-name my-path) load-path))) 
+
+(defun append-path ( my-path ) 
+  (setq load-path (append load-path (list (expand-file-name my-path))))) 
+
+;; Look first in the directory ~/elisp for elisp files 
+(prepend-path "~/elisp") 
+
+;; Load SSH mode
+;; (require 'ssh)
+
+;; Load verilog mode only when needed 
+(autoload 'verilog-mode "verilog-mode" "Verilog mode" t ) 
+
+;; Load shitty SSH mode. (displays passwords)
+;; (require 'ssh)
+
+;; Any files that end in .v should be in verilog mode 
+(setq auto-mode-alist (cons '("\\.v\\'" . verilog-mode) auto-mode-alist)) 
+
+;; Any files in verilog mode should have their keywords colorized 
+(add-hook 'verilog-mode-hook '(lambda () (font-lock-mode 1)))
+
+;; I want CPerl mode instead of Perl mode.
+(setq auto-mode-alist
+      (append '(
+                ("\\.pl$"             . cperl-mode)
+                ("\\.pm$"             . cperl-mode)
+                ("\\.v$"              . verilog-mode)
+                ("\\.V$"              . verilog-mode)
+                ("\\.h$"              . c++-mode)
+                ("\\.l$"              . c-mode)
+                ("\\.y$"              . c-mode)
+                ("\\.make$"           . makefile-mode)
+                )
+              auto-mode-alist))
+
+
+;; set C-x C-b to electric-buffer-list.. I like electric buffer!
+(global-set-key "\C-x\C-b" 'electric-buffer-list)
+(global-set-key "\C-c\C-c" 'comment-region)
+(global-set-key "\C-c\C-v" 'uncomment-region)
+(global-set-key "\M-c" 'compile)
+(global-set-key "\M-s" 'shell)
+
+;; set M-g to goto-line.. it's fun!
+(global-set-key "\M-g" 'goto-line)
+
+;; set C-tab switch windows! 
+(global-set-key [(control tab)] 'other-window)
+
+;; set C-q to the same ast C-tab (other window)
+(global-set-key [(control q)] 'other-window)
+
+;; This fixes what I see as a horrible bug in Xemacs, the home and
+;; end keys are foolishly bound to stupid stuff.  Here they are
+;; bound such that they take you to the beginning and end of a
+;; buffer. 
+(global-set-key [home] 'beginning-of-buffer)
+(global-set-key [end] 'end-of-buffer)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-matching-paren-on-screen nil)
+ '(c-echo-syntactic-information-p nil)
+ '(c-offsets-alist (quote ((innamespace . 0))))
+ '(case-fold-search t)
+ '(column-number-mode t)
+ '(comint-input-autoexpand t)
+ '(comint-input-ignoredups t)
+ '(compile-auto-highlight t)
+ '(compile-command "make ")
+ '(complex-buffers-menu-p t)
+ '(cperl-break-one-line-blocks-when-indent t)
+ '(cperl-clobber-lisp-bindings nil)
+ '(cperl-electric-lbrace-space nil)
+ '(cperl-electric-parens nil)
+ '(cperl-fix-hanging-brace-when-indent t)
+ '(cperl-font-lock t)
+ '(cperl-hairy nil)
+ '(cperl-invalid-face (quote underline))
+ '(cperl-merge-trailing-else t)
+ '(cperl-speed (quote please-ignore-this-line) t)
+ '(current-language-environment "Latin-9")
+ '(default-input-method "latin-9-prefix")
+ '(fill-column 70)
+ '(global-font-lock-mode t nil (font-lock))
+ '(inhibit-startup-screen t)
+ '(inverse-video t)
+ '(kill-whole-line t)
+ '(make-backup-files nil)
+ '(modifier-keys-are-sticky t)
+ '(perl-indent-level 2)
+ '(print-circle nil t)
+ '(print-continuous-numbering nil t)
+ '(printer-name "ethel")
+ '(shell-multiple-shells t)
+ '(show-paren-mode t nil (paren))
+ '(show-paren-style (quote expression))
+ '(standard-indent 2)
+ '(tex-alt-dvi-print-command "lpr -d")
+ '(tex-dvi-print-command "lpr -d")
+ '(transient-mark-mode t)
+ '(verilog-auto-endcomments nil)
+ '(verilog-auto-newline nil)
+ '(vhdl-electric-keywords nil)
+ '(vhdl-reset-kind (quote sync))
+ '(whitespace-global-mode nil nil (whitespace))
+ '(x-select-enable-clipboard t))
+
+
+;;(set-default-font     "-dec-terminal-medium-*-*-*-*-*-*-*-c-*-*-*")
+;;(set-default-font     "-b&h-lucidatypewriter-medium-*-*-*-14-*-*-*-m-*-*-*")
+(set-default-font     "Monospace-11")
+(set-background-color "black")
+(set-foreground-color "white")
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(bold ((t (:inverse-video nil))))
+ '(bold-italic ((t (:underline nil))))
+ '(cperl-array-face ((((class color) (background dark)) (:foreground "purple1"))))
+ '(cperl-hash-face ((((class color) (background dark)) (:foreground "#fF4545"))))
+ '(cperl-nonoverridable-face ((((class color) (background dark)) (:foreground "lightblue"))))
+ '(font-lock-comment-face ((((class color) (background dark)) (:foreground "gray"))))
+ '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "yellow"))))
+ '(font-lock-string-face ((((class color) (background dark)) (:foreground "forestgreen"))))
+ '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "salmon"))))
+ '(gnus-group-mail-1-empty-face ((((class color) (background dark)) nil)))
+ '(isearch ((t (:background "darkred"))))
+ '(list-mode-item-selected ((t (:background "gray68"))))
+ '(message-header-other-face ((((class color) (background dark)) (:foreground "#00000"))))
+ '(mode-line-buffer-id ((t (:foreground "white"))))
+ '(modeline-mousable ((t (:foreground "white"))))
+ '(paren-match ((t (:background "steelblue"))))
+ '(primary-selection ((t (:background "gray65"))))
+ '(trailing-whitespace ((((class color) (background dark)) (:background "red"))))
+ '(underline ((t (:underline nil))))
+ '(verilog-font-lock-p1800-face ((t (:foreground "gray" :weight bold))))
+ '(zmacs-region ((t (:background "darkgreen")))))
+
+
+(put 'upcase-region 'disabled nil)
+(put 'scroll-left 'disabled nil)
+
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+;; backwards compatibility as default-buffer-file-coding-system
+;; is deprecated in 23.2.
+(if (boundp 'buffer-file-coding-system)
+    (setq-default buffer-file-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8))
+
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))

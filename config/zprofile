@@ -1,0 +1,9 @@
+#
+## Fix for problem with snaps 
+#
+
+emulate sh -c 'source /etc/profile'
+
+# Add local paths
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+

@@ -1,0 +1,24 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/maximus/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+function venv() {
+	. ./venv*/bin/activate 
+}
+
+source ~/.zsh_modules/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
