@@ -5,7 +5,7 @@ This repo helps me synchronize my ZSH setup on all of my various machines. One t
 Here's how to set it up:
 
 ```
-git clone --recursive XXX
+git clone --recursive https://github.com/mike-matera/zsh_config.git
 ./zsh_config/setup.sh
 ```
 
