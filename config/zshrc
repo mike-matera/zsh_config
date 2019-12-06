@@ -11,6 +11,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# Source kubectl completeion if possible. 
+if [[ -f ~/.kubectl.zsh ]]; then 
+	source ~/.kubectl.zsh
+fi
+
 function venv() {
 	. ./venv*/bin/activate 
 }
