@@ -5,21 +5,11 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/maximus/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
-# Source kubectl completeion if possible. 
-if type kubectl > /dev/null 2>&1; then 
-    source <(kubectl completion zsh)
-fi
-
-# Source helm completeion if possible. 
-if type helm > /dev/null 2>&1; then 
-    source <(helm completion zsh)
-fi
 
 function venv() {
 	. ./venv*/bin/activate 
@@ -33,5 +23,22 @@ source ~/.zsh_modules/powerlevel10k/powerlevel10k.zsh-theme
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+#### Completions 
+
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
+
+# Setup Terraform completion if possible
+if type terraform > /dev/null 2>&1; then 
+    complete -o nospace -C terraform terraform
+fi
+
+# Source kubectl completeion if possible. 
+if type kubectl > /dev/null 2>&1; then 
+    source <(kubectl completion zsh)
+fi
+
+# Source helm completeion if possible. 
+if type helm > /dev/null 2>&1; then 
+    source <(helm completion zsh)
+fi
+
