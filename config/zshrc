@@ -42,3 +42,15 @@ if type helm > /dev/null 2>&1; then
     source <(helm completion zsh)
 fi
 
+# Source gcloud completion if possible. 
+if type gcloud > /dev/null 2>&1; then
+    GOOGLE_SDK_ROOT=$(gcloud --format='value(installation.sdk_root)' info)
+    # Local install
+    if [[ -f "$GOOGLE_SDK_ROOT/completion.zsh.inc" ]]; then
+        source "$GOOGLE_SDK_ROOT/completion.zsh.inc"
+    fi
+    # DEB install
+    if [[ -f "/usr/share/google-cloud-sdk/completion.zsh.inc" ]]; then
+        source /usr/share/google-cloud-sdk/completion.zsh.inc
+    fi
+fi
