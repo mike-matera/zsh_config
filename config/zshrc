@@ -45,7 +45,7 @@ fi
 # Source gcloud completion if possible. 
 if [[ -f "/usr/share/google-cloud-sdk/completion.zsh.inc" ]]; then
     source /usr/share/google-cloud-sdk/completion.zsh.inc
-else
+elif type gcloud > /dev/null 2>&1; then 
     # This is pretty slow... 
     GOOGLE_SDK_ROOT=$(gcloud --format='value(installation.sdk_root)' info)
     # Local install
