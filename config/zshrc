@@ -53,3 +53,17 @@ elif type gcloud > /dev/null 2>&1; then
         source "$GOOGLE_SDK_ROOT/completion.zsh.inc"
     fi
 fi
+
+# Sourcing ROS2 setup breaks some completion. Ugh.
+function setup {
+	source /opt/ros/humble/setup.zsh
+	eval "$(register-python-argcomplete3 ros2)"
+	eval "$(register-python-argcomplete3 colcon)"
+}
+
+function localsetup {
+	source ./install/setup.zsh
+        eval "$(register-python-argcomplete3 ros2)"
+        eval "$(register-python-argcomplete3 colcon)"
+}
+
