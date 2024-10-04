@@ -56,14 +56,16 @@ fi
 
 # Sourcing ROS2 setup breaks some completion. Ugh.
 function rs {
-	source /opt/ros/humble/setup.zsh
-	eval "$(register-python-argcomplete3 ros2)"
-	eval "$(register-python-argcomplete3 colcon)"
+	unset XDG_SESSION_TYPE
+	source /opt/ros/jazzy/setup.zsh
+	eval "$(register-python-argcomplete ros2)"
+	eval "$(register-python-argcomplete colcon)"
 }
 
 function rl {
+	unset XDG_SESSION_TYPE
 	source ./install/setup.zsh
-        eval "$(register-python-argcomplete3 ros2)"
-        eval "$(register-python-argcomplete3 colcon)"
+        eval "$(register-python-argcomplete ros2)"
+        eval "$(register-python-argcomplete colcon)"
 }
 
