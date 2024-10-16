@@ -56,14 +56,14 @@ fi
 
 # Sourcing ROS2 setup breaks some completion. Ugh.
 function rs {
-	unset XDG_SESSION_TYPE
+	unset XDG_SESSION_TYPE # Fix segfault in gazebo with Wayland
 	source /opt/ros/jazzy/setup.zsh
 	eval "$(register-python-argcomplete ros2)"
 	eval "$(register-python-argcomplete colcon)"
 }
 
 function rl {
-	unset XDG_SESSION_TYPE
+	unset XDG_SESSION_TYPE # Fix segfault in gazebo with Wayland
 	source ./install/setup.zsh
         eval "$(register-python-argcomplete ros2)"
         eval "$(register-python-argcomplete colcon)"
