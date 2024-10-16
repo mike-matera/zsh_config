@@ -69,7 +69,7 @@ function rl {
         eval "$(register-python-argcomplete colcon)"
 }
 
-function xilinx { 
-    # Add Vitis
+# Source Xilinx stuff if present.
+if [ -f /opt/Xilinx/Vitis/2024.1/settings64.sh ]; then
     source /opt/Xilinx/Vitis/2024.1/settings64.sh
-}
+fi
