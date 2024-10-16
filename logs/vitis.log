@@ -1,0 +1,10 @@
+09:58:26 INFO  : updated workspace path: 
+09:58:26 INFO  : Traceback (most recent call last):
+09:58:26 INFO  :   File "/opt/Xilinx/Vitis/2024.1/data/embeddedsw/scripts/pyesw//repo.py", line 13, in <module>
+09:58:26 INFO  :     import utils
+09:58:26 INFO  :   File "/opt/Xilinx/Vitis/2024.1/data/embeddedsw/scripts/pyesw/utils.py", line 16, in <module>
+09:58:26 INFO  :     import yaml
+09:58:26 INFO  : ModuleNotFoundError: No module named 'yaml'
+09:58:26 ERROR : Error in Creating Embedded Repositories at '/tmp/rigel_lopper_maximus16682009348887204223'.
+09:58:26 ERROR : Error in Creating Embedded Repositories at '/tmp/rigel_lopper_maximus16682009348887204223'.
+09:58:37 INFO  : Terminating Vitis C++ Server
