@@ -7,6 +7,9 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 
+# From the poetry docs...
+fpath+=~/.zfunc
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -32,12 +35,12 @@ if type terraform > /dev/null 2>&1; then
     complete -o nospace -C terraform terraform
 fi
 
-# Source kubectl completeion if possible. 
+# Source kubectl completions if possible. 
 if type kubectl > /dev/null 2>&1; then 
     source <(kubectl completion zsh)
 fi
 
-# Source helm completeion if possible. 
+# Source helm completions if possible. 
 if type helm > /dev/null 2>&1; then 
     source <(helm completion zsh)
 fi
