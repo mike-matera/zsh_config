@@ -15,7 +15,11 @@ compinit
 # End of lines added by compinstall
 
 function venv() {
-	. ./venv*/bin/activate 
+    if [ ! -d .venv/ ]; then
+    	. ./venv*/bin/activate
+    else
+        . ./.venv/bin/activate
+    fi
 }
 
 source ~/.zsh_modules/powerlevel10k/powerlevel10k.zsh-theme
